@@ -37,6 +37,7 @@ services:
       --networkid=${EC_NETWORK_ID:-80086}
       --snapshot=false
       --syncmode=snap
+      --nat=${EC_NAT:-}
     volumes:
       - ./data/geth:/root/.ethereum
       - ${EC_JWT_PATH:-~/.beacond/config/jwt.hex}:/root/jwt/jwt.hex
