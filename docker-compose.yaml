@@ -1,0 +1,44 @@
+version: "1.0"
+
+services:
+  #             _   _
+  #   __ _  ___| |_| |__
+  #  / _` |/ _ \ __| '_ \
+  # | (_| |  __/ |_| | | |
+  #  \__, |\___|\__|_| |_|
+  #  |___/
+  geth:
+    image: ethereum/client-go:${GETH_VERSION:-v1.14.4}
+    ports:
+      - ${EC_PORT_P2P:-30303}:30303/tcp # P2P TCP
+      - ${EC_PORT_P2P:-30303}:30303/udp # P2P UDP
+      - ${EC_PORT_HTTP:-8545}:8545 # JSON-RPC
+      - ${EC_PORT_ENGINE:-8551}:8551 # ENGINE-API
+      - ${EC_PORT_METRIC:-6060}:6060 # METRICS
+    command: |
+      --${NETWORK:-goerli}
+      --http
+      --http.addr=0.0.0.0
+      --http.port=8545
+      --http.vhosts="*"
+      --http.api="db,eth,net,engine,rpc,web3"
+      --ws
+      --ws.addr=0.0.0.0
+      --ws.port=8546
+      --ws.origins="*"
+      --ws.api="eth,net,web3"
+      --authrpc.jwtsecret="/root/jwt/jwt.hex"
+      --authrpc.addr=0.0.0.0
+      --authrpc.port=8551
+      --authrpc.vhosts="*"
+      --metrics
+      --metrics.addr=0.0.0.0
+      --metrics.port=6060
+      --bootnodes=${EC_BOOTNODES:-enode://90d394d38341fc8295b2a4575ac505d81ba170e7d7101a65f3606609f8755cd7148089c16bec3a9e4a58d4abd0edf15cb3edfbecb2552e5dc78d5a0e019bc165@15.156.23.209:30303,enode://be66a0ea24e6cb71358498d95e5311995648d2c1f4037d286d762a76b083baa6c261b47cb48d5f59a87ed50d46b07a1997bc3502382a46f215d3d43139cde98b@15.222.135.42:30303,enode://1984068304a37dc73cd3640725a7057bcee3dca118ee9e2a2f8fca5b751dc2022298a7a85bdbcc9d4b8b8c32e54ac44a50099b499e27676d889f42d749a2bb9c@3.97.247.66:30303,enode://d0281031fd4ce46c0365baf85966b1dcca5d67ed68b01ca9775c3ae7f34116ff6a486855a83f94163702ad646b259c672b637b1ccc67eb8fad4852c44f390200@15.157.46.190:30303,enode://99f592bc015cc570ad47027168975a0eee522157b990f7e562f46460babd666666dfa7a39d144b175d61c5206add505709f950ff12fd61f753f0e03fe85ea538@15.157.90.98:30303}
+      --networkid=${EC_NETWORK_ID:-80086}
+      --snapshot=false
+      --syncmode=snap
+    volumes:
+      - ./data/geth:/root/.ethereum
+      - ${EC_JWT_PATH:-~/.beacond/config/jwt.hex}:/root/jwt/jwt.hex
+    restart: unless-stopped

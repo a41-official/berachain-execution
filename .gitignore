@@ -1,0 +1,5 @@
+.env
+data
+jwt
+*.p12
+.DS_Store
