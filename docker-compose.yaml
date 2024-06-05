@@ -16,7 +16,6 @@ services:
       - ${EC_PORT_ENGINE:-8551}:8551 # ENGINE-API
       - ${EC_PORT_METRIC:-6060}:6060 # METRICS
     command: |
-      --${NETWORK:-goerli}
       --http
       --http.addr=0.0.0.0
       --http.port=8545
