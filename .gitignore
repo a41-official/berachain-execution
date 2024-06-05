@@ -3,3 +3,4 @@ data
 jwt
 *.p12
 .DS_Store
+eth-genesis.json
