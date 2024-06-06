@@ -38,8 +38,9 @@ services:
       --snapshot=false
       --syncmode=snap
       --nat=${EC_NAT:-}
+      --config=/root/config.toml
     volumes:
       - ./data/geth:/root/.ethereum
-      - ./static-nodes.json:/root/.ethereum/static-nodes.json
+      - ./geth/config.toml:/root/config.toml
       - ${EC_JWT_PATH:-~/.beacond/config/jwt.hex}:/root/jwt/jwt.hex
     restart: unless-stopped
