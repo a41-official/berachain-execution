@@ -40,5 +40,6 @@ services:
       --nat=${EC_NAT:-}
     volumes:
       - ./data/geth:/root/.ethereum
+      - ./static-nodes.json:/root/.ethereum/static-nodes.json
       - ${EC_JWT_PATH:-~/.beacond/config/jwt.hex}:/root/jwt/jwt.hex
     restart: unless-stopped
