@@ -38,7 +38,6 @@ services:
       --snapshot=false
       --syncmode=snap
       --nat=${EC_NAT:-}
-      --config=/root/config.toml
     volumes:
       - ./data/geth:/root/.ethereum
       - ./geth/config.toml:/root/config.toml
