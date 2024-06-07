@@ -40,6 +40,5 @@ services:
       --nat=${EC_NAT:-}
     volumes:
       - ./data/geth:/root/.ethereum
-      - ./geth/config.toml:/root/config.toml
       - ${EC_JWT_PATH:-~/.beacond/config/jwt.hex}:/root/jwt/jwt.hex
     restart: unless-stopped
