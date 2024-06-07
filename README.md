@@ -3,7 +3,7 @@ Berachain Execution Client
 
 ## Init
 
-1. Download [eth-genesis.json](https://github.com/berachain/beacon-kit/blob/main/testing/networks/80086/eth-genesis.json)
+1. Download [eth-genesis.json](https://github.com/berachain/beacon-kit/blob/main/testing/networks/80084/eth-genesis.json)
 
 2. Run init
 ```
