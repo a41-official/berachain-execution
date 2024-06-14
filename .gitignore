@@ -4,3 +4,4 @@ jwt
 *.p12
 .DS_Store
 eth-genesis.json
+geth/static-nodes.json
