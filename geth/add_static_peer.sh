@@ -10,7 +10,7 @@ fi
 enodes=$(jq -r '.[]' "$static_nodes_file")
 
 for enode in $enodes; do
-  result=$(docker exec -it berachain-execution-geth-1 geth attach --exec "admin.addPeer('$enode')")
+  result=$(docker exec -i berachain-execution-geth-1 geth attach --exec "admin.addPeer('$enode')")
   if [ "$result" = "true" ]; then
     echo "Successfully added peer: $enode"
   else
