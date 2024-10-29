@@ -10,7 +10,7 @@ Berachain Execution Client deployment
 2. Run init
 
 ```bash
-docker run --rm -v $PWD/eth-genesis.json:/app/eth-genesis.json -v $PWD/data:/data ethereum/client-go init --datadir /data/geth /app/eth-genesis.json
+docker run --rm -v $PWD/eth-genesis.json:/app/eth-genesis.json -v $PWD/data:/data ethereum/client-go:v1.14.5 init --datadir /data/geth /app/eth-genesis.json
 ```
 
 ### Deploy
