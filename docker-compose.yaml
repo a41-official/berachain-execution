@@ -8,7 +8,7 @@ services:
   #  \__, |\___|\__|_| |_|
   #  |___/
   geth:
-    image: ethereum/client-go:${GETH_VERSION:-v1.14.13}
+    image: ethereum/client-go:${GETH_VERSION:-v1.15.11}
     ports:
       - ${EC_PORT_P2P:-30303}:30303/tcp # P2P TCP
       - ${EC_PORT_P2P:-30303}:30303/udp # P2P UDP
@@ -33,8 +33,8 @@ services:
       --metrics
       --metrics.addr=0.0.0.0
       --metrics.port=6060
-      --bootnodes=${EC_BOOTNODES:-enode://e31aa249638083d34817eed2b499ccd4b0718a332f0ea530e3062e13f624cb03a7d6b6e0460193ee87b5fc12e73a726070a3126ef53492ffbdc5e6c102f6dfb3@34.64.198.56:30303,enode://3f2f85e2e711f198fb7324b74fab6a0599b2534774f3aa26241dbbabe870b650574324da01aa98ee24ce97c8d76362a2db03034a6ddff43119ccfdc269663cbf@34.47.79.13:30303,enode://7a2f67d22b12e10c6ba9cd951866dda6471604be5fbd5102217dbad1cc56e590befd2009ecc99958a468a5b8e0dc28e14d9b6822491719c93199be6aa0319077@34.124.220.31:30303}
-      --networkid=${EC_NETWORK_ID:-80084}
+      --bootnodes=${EC_BOOTNODES:-enode://0c5a4a3c0e81fce2974e4d317d88df783731183d534325e32e0fdf8f4b119d7889fa254d3a38890606ec300d744e2aa9c87099a4a032f5c94efe53f3fcdfecfe@34.64.176.79:30303,enode://b6a3137d3a36ef37c4d31843775a9dc293f41bcbde33b6309c80b1771b6634827cd188285136a57474427bd8845adc2f6fe2e0b106bd58d14795b08910b9c326@34.64.181.70:30303,enode://0b6633300614bc2b9749aee0cace7a091ec5348762aee7b1d195f7616d03a9409019d9bef336624bab72e0d069cd4cf0b0de6fbbf53f04f6b6e4c5b39c6bdca6@34.64.39.31:30303,enode://552b001abebb5805fcd734ad367cd05d9078d18f23ec598d7165460fadcfc51116ad95c418f7ea9a141aa8cbc496c8bea3322b67a5de0d3380f11aab1a797513@34.64.183.158:30303}
+      --networkid=${EC_NETWORK_ID:-80094}
       --snapshot=false
       --syncmode=snap
       --nat=${EC_NAT:-}
